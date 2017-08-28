@@ -1,0 +1,7 @@
+indexes:
+
+- kind: Wine
+  ancestor: no
+  properties:
+  - name: name
+  - name: year
