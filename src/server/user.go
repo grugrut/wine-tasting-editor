@@ -4,6 +4,7 @@ import (
 	"net/http"
 )
 
+// HandlerUser serve page for user
 func HandlerUser(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "GET":
