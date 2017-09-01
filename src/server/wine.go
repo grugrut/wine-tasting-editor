@@ -7,6 +7,7 @@ import (
 	"google.golang.org/appengine"
 
 	"github.com/grugrut/wine-tasting-note/src/model"
+	"strconv"
 )
 
 // HandlerWine serve page for wine
@@ -28,9 +29,33 @@ func handlerWineGet(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, err.Error())
 		return
 	}
-	fmt.Fprint(w, wines)
+	html := `
+<html>
+<body>
+<form method="post">
+<input name="name">
+<input name="year">
+<input type="submit">
+</form>
+</body>
+</html>
+`
+	fmt.Fprintln(w, html)
+	fmt.Fprintln(w, wines)
 }
 
 func handlerWinePost(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(http.StatusNotImplemented)
+	c := appengine.NewContext(r)
+	year, _ := strconv.Atoi(r.FormValue("year"))
+	wine := model.Wine{
+		Name: r.FormValue("name"),
+		Year: year,
+	}
+	err := model.InsertWine(c, wine)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	http.Redirect(w, r, "/wine", http.StatusFound)
 }

@@ -21,3 +21,10 @@ func GetWines(c context.Context) ([]Wine, error) {
 
 	return wines, nil
 }
+
+// CreateWine insert wine to datastore
+func InsertWine(c context.Context, wine Wine) error {
+	key := datastore.NewIncompleteKey(c, "Wine", nil)
+	_, err := datastore.Put(c, key, &wine)
+	return err
+}
