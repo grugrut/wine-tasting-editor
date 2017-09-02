@@ -4,4 +4,3 @@ indexes:
   ancestor: no
   properties:
   - name: name
-  - name: year

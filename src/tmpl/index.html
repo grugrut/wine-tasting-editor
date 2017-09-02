@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+    </head>
+    <body>
+        <h2>Wine Tasting Note</h2>
+        {{range $wine := .Wines}}
+        <p>{{$wine}}</p>
+        {{end}}
+        <form method="post">
+            <input name="name">
+            <input name="year">
+            <input type="submit">
+        </form>
+    </body>
+</html>
