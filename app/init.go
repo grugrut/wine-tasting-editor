@@ -12,6 +12,7 @@ func init() {
 }
 
 func handlePage(w http.ResponseWriter, r *http.Request) {
+	http.Redirect(w, r, "/wine", http.StatusFound)
 	/*	c := appengine.NewContext(r)
 		if u := user.Current(c); u == nil {
 			url, err := user.LoginURL(c, r.URL.String())

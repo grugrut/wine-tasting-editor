@@ -1,0 +1,13 @@
+{{define "content"}}
+<ul>
+    {{range $wine := .Wines}}
+    <li>{{$wine}}</li>
+    {{end}}
+</ul>
+
+<form method="post">
+    <input name="name">
+    <input name="year">
+    <input type="submit">
+</form>
+{{end}}

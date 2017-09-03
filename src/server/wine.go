@@ -37,12 +37,22 @@ func handlerWineGet(w http.ResponseWriter, r *http.Request) {
 		"Wines": wines,
 	}
 
-	tmpl := template.Must(template.ParseFiles("../src/tmpl/index.html"))
+	tmpl := template.Must(template.ParseFiles("../src/tmpl/base.html", "../src/tmpl/wine.html"))
 	tmpl.Execute(w, data)
 }
 
 func handlerWinePost(w http.ResponseWriter, r *http.Request) {
 	c := appengine.NewContext(r)
+	if u := user.Current(c); u == nil {
+		url, err := user.LoginURL(c, r.URL.String())
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		w.Header().Set("Location", url)
+		w.WriteHeader(http.StatusFound)
+		return
+	}
 	name := r.FormValue("name")
 	year, _ := strconv.Atoi(r.FormValue("year"))
 	created := time.Now()
