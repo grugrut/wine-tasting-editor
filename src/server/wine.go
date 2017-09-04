@@ -57,12 +57,10 @@ func handlerWinePost(w http.ResponseWriter, r *http.Request) {
 	year, _ := strconv.Atoi(r.FormValue("year"))
 	created := time.Now()
 	updated := time.Now()
-	account := user.Current(c).String()
 
 	wine := model.Wine{
 		Name:    name,
 		Year:    year,
-		Account: account,
 		Created: created,
 		Updated: updated,
 	}
