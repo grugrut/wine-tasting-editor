@@ -9,8 +9,12 @@ import (
 // Wine model
 type Wine struct {
 	Name    string
-	Year    int
-	Account string
+	Vintage int
+	What    []string
+	Who     string
+	Where   string
+	Type    string
+	URL     string
 	Created time.Time
 	Updated time.Time
 }

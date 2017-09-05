@@ -54,13 +54,21 @@ func handlerWinePost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	name := r.FormValue("name")
-	year, _ := strconv.Atoi(r.FormValue("year"))
+	vintage, _ := strconv.Atoi(r.FormValue("vintage"))
+	who := r.FormValue("who")
+	where := r.FormValue("where")
+	winetype := r.FormValue("type")
+	wineurl := r.FormValue("url")
 	created := time.Now()
 	updated := time.Now()
 
 	wine := model.Wine{
 		Name:    name,
-		Year:    year,
+		Vintage: vintage,
+		Who:     who,
+		Where:   where,
+		Type:    winetype,
+		URL:     wineurl,
 		Created: created,
 		Updated: updated,
 	}
