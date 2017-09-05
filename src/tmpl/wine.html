@@ -1,7 +1,19 @@
 {{define "content"}}
 <ul>
   {{range $wine := .Wines}}
-  <li>{{$wine}}</li>
+  <div class="card">
+    <div class="card-header">
+      {{$wine.Name}} {{$wine.Vintage}}
+    </div>
+    <div class="card-block">
+      <dl>
+        <dt>生産者</dt>
+        <dd>{{$wine.Who}}</dd>
+        <dt>生産地</dt>
+        <dd>{{$wine.Where}}</dd>
+      </dl>
+    </div>
+  </div>
   {{end}}
 </ul>
 
