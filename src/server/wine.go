@@ -57,20 +57,20 @@ func handlerWinePost(w http.ResponseWriter, r *http.Request) {
 	vintage, _ := strconv.Atoi(r.FormValue("vintage"))
 	who := r.FormValue("who")
 	where := r.FormValue("where")
-	winetype := r.FormValue("type")
+	category := r.FormValue("category")
 	wineurl := r.FormValue("url")
 	created := time.Now()
 	updated := time.Now()
 
 	wine := model.Wine{
-		Name:    name,
-		Vintage: vintage,
-		Who:     who,
-		Where:   where,
-		Type:    winetype,
-		URL:     wineurl,
-		Created: created,
-		Updated: updated,
+		Name:     name,
+		Vintage:  vintage,
+		Who:      who,
+		Where:    where,
+		Category: category,
+		URL:      wineurl,
+		Created:  created,
+		Updated:  updated,
 	}
 	err := model.InsertWine(c, wine)
 	if err != nil {

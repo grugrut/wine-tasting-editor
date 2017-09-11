@@ -8,15 +8,15 @@ import (
 
 // Wine model
 type Wine struct {
-	Name    string
-	Vintage int
-	What    []string
-	Who     string
-	Where   string
-	Type    string
-	URL     string
-	Created time.Time
-	Updated time.Time
+	Name     string
+	Vintage  int
+	What     []string
+	Who      string
+	Where    string
+	Category string
+	URL      string
+	Created  time.Time
+	Updated  time.Time
 }
 
 // GetWines returns wine mode list
