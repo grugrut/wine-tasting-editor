@@ -19,6 +19,7 @@ type Review struct {
 	WineID  int
 }
 
+// GetReviews get review list
 func GetReviews(c context.Context) ([]Review, error) {
 	var reviews []Review
 	q := datastore.NewQuery("Review")
@@ -30,6 +31,7 @@ func GetReviews(c context.Context) ([]Review, error) {
 	return reviews, nil
 }
 
+// InsertReview put new review
 func InsertReview(c context.Context, r Review) error {
 	key := datastore.NewIncompleteKey(c, "Review", nil)
 	_, err := datastore.Put(c, key, &r)

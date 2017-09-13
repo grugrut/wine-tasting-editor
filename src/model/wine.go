@@ -21,8 +21,8 @@ type Wine struct {
 
 // GetWines returns wine mode list
 func GetWines(c context.Context) ([]Wine, error) {
-	q := datastore.NewQuery("Wine").Limit(10)
-	wines := make([]Wine, 0, 10)
+	q := datastore.NewQuery("Wine")
+	var wines []Wine
 	if _, err := q.GetAll(c, &wines); err != nil {
 		return nil, err
 	}
