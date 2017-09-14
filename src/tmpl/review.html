@@ -1,0 +1,10 @@
+{{define "content"}}
+<ul>
+  {{range $review := .Reviews}}
+  <div class="card">
+    <div class="card-block">
+      <p>{{$review}}
+    </div>
+  </div>
+  {{end}}
+</ul>
